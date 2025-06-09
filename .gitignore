@@ -1,0 +1,28 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE config
+.vscode/
+.idea/
+
+# Build outputs
+dist/
+build/
+
+# Uploaded files
+uploads/videos/
+uploads/images/
+"uploads/videos/" 
+"*.mp4" 
+"*.mp4" 
