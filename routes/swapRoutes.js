@@ -5,7 +5,7 @@ const Chat = require('../models/Chat'); // adjust path as needed
 const router = express.Router();
 
 // Create a new swap request
-router.post('/request', async (req, res) => {
+router.post('/request', auth, async (req, res) => {
   try {
     const { requesterId, recipientId, requesterSkill, desiredSkill, message } = req.body;
     console.log("Received swap request with body:", req.body);
@@ -29,7 +29,7 @@ router.post('/request', async (req, res) => {
 });
 
 // Get all incoming swap requests for a specific user
-router.get('/incoming/:userId', async (req, res) => {
+router.get('/incoming/:userId', auth, async (req, res) => {
   try {
     const swaps = await SwapRequest.find({ recipientId: req.params.userId })
       .populate('requesterId', 'name email')
@@ -41,7 +41,7 @@ router.get('/incoming/:userId', async (req, res) => {
 });
 
 // Accept or reject a swap request
-router.patch('/:id', async (req, res) => {
+router.patch('/:id', auth, async (req, res) => {
   try {
     const { status, isRead } = req.body;
     const updates = {};
